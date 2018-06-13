@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-    <a href="first.action">请求Struts2</a>
+    <a href="/userAction">请求Struts2</a><br>
+    <a href="/userAction!add">添加用户</a><br/>
+    <a href="/userAction!update">更新用户</a>
   </body>
 </html>
