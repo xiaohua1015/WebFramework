@@ -1,5 +1,6 @@
 package com.isdev.xiaohua.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -20,6 +21,9 @@ public class UserAction extends ActionSupport {
 
     public String add () throws Exception {
         info = "添加用户信息";
+        System.out.println("request = " + ActionContext.getContext().get("request"));
+        System.out.println("session = " + ActionContext.getContext().getSession());
+        System.out.println("application = " + ActionContext.getContext().getApplication() );
         return "add";
     }
 

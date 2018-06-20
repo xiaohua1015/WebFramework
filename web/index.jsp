@@ -12,7 +12,12 @@
   </head>
   <body>
     <a href="/test/userAction">请求Struts2</a><br>
-    <a href="/test/userAction!add">添加用户</a><br/>
-    <a href="/test/userAction!update">更新用户</a>
+    <a href="/test/userAction!add?name=xiaohua">添加用户</a><br/>
+    <a href="/test/userAction!update">更新用户</a><br>
+
+    <form action="/greeting" method="post">
+      <input type="text" name="username" placeholder="姓名"/>
+      <input type="submit" value="提交">
+    </form>
   </body>
 </html>
