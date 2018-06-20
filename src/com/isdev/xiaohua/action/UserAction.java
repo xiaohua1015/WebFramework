@@ -19,7 +19,6 @@ public class UserAction extends ActionSupport {
     }
 
     public String add () throws Exception {
-        System.out.println("add add add add ");
         info = "添加用户信息";
         return "add";
     }

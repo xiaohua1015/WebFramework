@@ -7,14 +7,16 @@
 <struts>
     <!--开启动态方法的使用，就可以直接使用http://localhost:8080/xxx/xxxAction!add　　直接调用xxxAction中的add方法了，并且在struts.xml中的action配置中，就不需要配置method属性的值了。这样做就解决了写死method值的问题-->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
-    <package name="myPackage" namespace="/" extends="struts-default">
-        <!--这是因为 struts2.5 为了提升安全性，添加了 allomethod 这么个玩意。-->
+    <package name="myPackage" namespace="/test" extends="struts-default">
+        <!--这是因为 struts2.5 为了提升安全性，添加了 allowed-methods 这么个玩意。-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="userAction" class="com.isdev.xiaohua.action.UserAction">
             <!--<result>/strut2/first.jsp</result>-->
-            <result>/struts2/addUser.jsp</result>
-            <result name="add">/struts2/addUser.jsp</result>
-            <result name="update">/struts2/updateUser.jsp</result>
+            <result type="redirect">/struts2/addUser.jsp</result>
+            <!--默认 dispatcher-->
+            <result name="add" >/struts2/addUser.jsp</result>
+            <!--此处type= "type="redirect" property 不显示 -->
+            <result name="update" type="dispatcher">/struts2/updateUser.jsp</result>
         </action>
     </package>
 </struts>
