@@ -16,6 +16,10 @@
         <s:property value="username"/>
     </font>
     <br/>
-    欢迎来到本站！
+    欢迎来到本站！<br/>
+
+    request范围内的info值：<font color="red"><%= request.getAttribute("name")%></font>
+    session范围内的info值：<font color="red"><%= session.getAttribute("name")%></font>
+    application范围内的info值：<font color="red"><%= application.getAttribute("name")%></font>
 </body>
 </html>

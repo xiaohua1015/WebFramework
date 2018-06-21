@@ -19,5 +19,7 @@
       <input type="text" name="username" placeholder="姓名"/>
       <input type="submit" value="提交">
     </form>
+
+    <a href="/testAction">testAction</a>
   </body>
 </html>
