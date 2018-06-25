@@ -8,6 +8,8 @@
     <!--开启动态方法的使用，就可以直接使用http://localhost:8080/xxx/xxxAction!add　　直接调用xxxAction中的add方法了，并且在struts.xml中的action配置中，就不需要配置method属性的值了。这样做就解决了写死method值的问题-->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
     <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <!--<constant name="struts.devMode" value="true"/>-->
+    <constant name="struts.configuration.xml.reload" value="true"/>
     <package name="myPackage" namespace="/test" extends="struts-default">
         <!--这是因为 struts2.5 为了提升安全性，添加了 allowed-methods 这么个玩意。-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
@@ -18,15 +20,24 @@
             <result name="add" >/struts2/addUser.jsp</result>
             <!--此处type= "type="redirect" property 不显示 -->
             <result name="update" type="dispatcher">/struts2/updateUser.jsp</result>
+            <result name="register">/struts2/userInfo.jsp</result>
+            <result name="input">/struts2/index.jsp</result>
         </action>
     </package>
 
     <package name="myPackage1" extends="struts-default">
+        <interceptors>
+            <interceptor name="myInterceptor" class="com.isdev.xiaohua.interceptor.MyInterceptor"/>
+        </interceptors>
         <action name="greeting" class="com.isdev.xiaohua.action.GreetingAction">
             <result>/struts2/success.jsp</result>
             <result name="error">/struts2/error.jsp</result>
         </action>
         <action name="testAction" class="com.isdev.xiaohua.action.TestAction">
+            <interceptor-ref name="myInterceptor"/>
+            <!--加上log4j-cor.2.11.0.jar之后，这句话不加会报错-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="timer"/>
             <result>/struts2/success.jsp</result>
         </action>
         <action name="ognlAction" class="com.isdev.xiaohua.action.OGNLAction">

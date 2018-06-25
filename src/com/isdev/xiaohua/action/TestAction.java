@@ -31,6 +31,14 @@ public class TestAction extends ActionSupport {
         request.put("name", name);
         session.put("name", name);
         application.put("name", name);
+        System.out.println("execute");
+        Thread.sleep(1000);
         return SUCCESS;
+    }
+
+    @Override
+    public void validate() {
+        super.validate();
+        System.out.println("==============validate");
     }
 }

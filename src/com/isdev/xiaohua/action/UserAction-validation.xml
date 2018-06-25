@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--http://www.cnblogs.com/yimian/p/7818091.html xml头文件编写-->
+<!DOCTYPE validators PUBLIC
+
+        "-//Apache Struts//XWork Validator 1.0.3//EN"
+
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+    <field name="name">
+        <field-validator type="requiredstring">
+            <message>请输入用户名</message>
+        </field-validator>
+    </field>
+</validators>
