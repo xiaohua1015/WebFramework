@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -20,6 +21,9 @@
       <input type="submit" value="提交">
     </form>
 
-    <a href="/testAction">testAction</a>
+    <a href="/testAction">testAction</a><br/>
+
+    <a href="/ognlAction">OGNLAction</a><br/>
+
   </body>
 </html>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -11,6 +12,7 @@
     <title>error</title>
 </head>
 <body>
-    <font color="red">error:请输入姓名</font>
+    <font color="red">error:请输入姓名</font><br/>
+    set设置的值：<s:property value="#request.haha" default="没有数据"/><br/>
 </body>
 </html>

@@ -7,6 +7,7 @@
 <struts>
     <!--开启动态方法的使用，就可以直接使用http://localhost:8080/xxx/xxxAction!add　　直接调用xxxAction中的add方法了，并且在struts.xml中的action配置中，就不需要配置method属性的值了。这样做就解决了写死method值的问题-->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
     <package name="myPackage" namespace="/test" extends="struts-default">
         <!--这是因为 struts2.5 为了提升安全性，添加了 allowed-methods 这么个玩意。-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
@@ -26,6 +27,9 @@
             <result name="error">/struts2/error.jsp</result>
         </action>
         <action name="testAction" class="com.isdev.xiaohua.action.TestAction">
+            <result>/struts2/success.jsp</result>
+        </action>
+        <action name="ognlAction" class="com.isdev.xiaohua.action.OGNLAction">
             <result>/struts2/success.jsp</result>
         </action>
     </package>
