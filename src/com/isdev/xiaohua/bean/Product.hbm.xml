@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.isdev.xiaohua.bean">
+    <class name="Product">
+        <id name="id" column="id" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" length="50"/>
+        <property name="factory" type="string" length="50"/>
+        <property name="price" type="double" />
+        <property name="remark" type="string" length="50"/>
+    </class>
+</hibernate-mapping>
