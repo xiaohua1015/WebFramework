@@ -24,13 +24,14 @@ public class HibernateUtil {
 
     //获取session
     public static Session getSession() {
-        Session session = threadLocal.get();
+//        Session session = threadLocal.get();
+        Session session = null;
         if(session == null || !session.isOpen()) {
             if (sessionFactory == null) {
                 rebuildSessionFactory();
             }
             session = (sessionFactory != null) ? sessionFactory.openSession(): null;
-            threadLocal.set(session);
+//            threadLocal.set(session);
         }
         return session;
     }
