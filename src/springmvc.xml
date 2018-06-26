@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="user" class="com.isdev.xiaohua.bean.User">
+        <property name="id">
+            <value>1</value>
+        </property>
+        <property name="name">
+            <value>小华</value>
+        </property>
+        <property name="password">
+            <value>qwer123456</value>
+        </property>
+    </bean>
+
+    <bean autowire="byName" name="printUserInfo" class="com.isdev.xiaohua.bean.PrintUserInfo"/>
+    <!--只有请求localhost:8080/main.do的时候UserManager的handleRequestInternal方法才会执行-->
+    <bean name="/main.do" class="com.isdev.xiaohua.controller.UserManager">
+        <property name="printInfo">
+            <ref bean="printUserInfo"/>
+        </property>
+    </bean>
+</beans>
