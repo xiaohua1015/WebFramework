@@ -4,6 +4,7 @@ import com.isdev.xiaohua.bean.PrintUserInfo;
 import com.isdev.xiaohua.bean.User;
 import com.isdev.xiaohua.dao.TransactionExample;
 import com.isdev.xiaohua.dao.UserDAO;
+import com.isdev.xiaohua.dao.UserDAOSupport;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -30,6 +31,8 @@ public class SpringTest {
 //        UserDAO userDAO = (UserDAO) context.getBean("userDAO");
 //        userDAO.insertUser(user);
         TransactionExample transactionExample = (TransactionExample) context.getBean("transactionExample");
-        transactionExample.transactionOperation();
+//        transactionExample.transactionOperation();
+        UserDAOSupport userDAOSupport = (UserDAOSupport) context.getBean("userDAOSupport");
+        userDAOSupport.insert(user);
     }
 }
