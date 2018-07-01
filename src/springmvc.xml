@@ -3,22 +3,61 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="user" class="com.isdev.xiaohua.bean.User">
-        <property name="id">
-            <value>1</value>
+        <property name="id" value="3"/>
+        <property name="name" value="小雷"/>
+        <property name="password" value="qwer123456"/>
+    </bean>
+
+    <!--<bean autowire="byName" name="printUserInfo" class="com.isdev.xiaohua.bean.PrintUserInfo"/>-->
+    <bean name="printUserInfo" class="com.isdev.xiaohua.bean.PrintUserInfo">
+        <property name="user">
+            <ref bean="user"/>
         </property>
-        <property name="name">
-            <value>小华</value>
+    </bean>
+    <!--只有请求localhost:8080/main.do的时候UserManager的handleRequestInternal方法才会执行-->
+    <!--<bean name="/main.do" class="com.isdev.xiaohua.controller.UserManager">
+        <property name="printInfo">
+            <ref bean="printUserInfo"/>
         </property>
-        <property name="password">
-            <value>qwer123456</value>
+    </bean>-->
+
+    <bean id="dataSource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <bean id="userDAO" class="com.isdev.xiaohua.dao.implement.UserDAOImpl">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
         </property>
     </bean>
 
-    <bean autowire="byName" name="printUserInfo" class="com.isdev.xiaohua.bean.PrintUserInfo"/>
-    <!--只有请求localhost:8080/main.do的时候UserManager的handleRequestInternal方法才会执行-->
-    <bean name="/main.do" class="com.isdev.xiaohua.controller.UserManager">
-        <property name="printInfo">
-            <ref bean="printUserInfo"/>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+    </bean>
+
+    <bean id="transactionTemplete" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="propagationBehaviorName">
+            <value>PROPAGATION_REQUIRED</value>
+        </property>
+    </bean>
+
+    <bean id="transactionExample" class="com.isdev.xiaohua.dao.TransactionExample">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionTemplate">
+            <ref bean="transactionTemplete"/>
         </property>
     </bean>
 </beans>
